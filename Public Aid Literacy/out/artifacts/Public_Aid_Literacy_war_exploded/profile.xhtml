@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      template="/WEB-INF/templates/master.xhtml">
+
+   <ui:define name="title">Profile</ui:define>
+
+   <ui:define name="content">
+      <h1>Your Profile</h1>
+      <h:form styleClass="form-horizontal">
+         <div class="form-group">
+            <h:dataTable value="#{authBean.getUserList()}" var="u" border="1">
+            <h:column>
+               <f:facet name="header">
+                  First Name
+               </f:facet>
+               #{u.firstName}
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">
+                  Last Name
+               </f:facet>
+               #{u.lastName}
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">
+                  Mobile Number
+               </f:facet>
+               #{u.mobileNum}
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">
+                  Email
+               </f:facet>
+               #{u.email}
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">
+                  Country
+               </f:facet>
+               #{u.country}
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">
+                  City
+               </f:facet>
+               #{u.city}
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">
+                  Address
+               </f:facet>
+               #{u.address}
+            </h:column>
+
+
+         </h:dataTable>
+            <h:commandButton action="#{users.editUserAcc(student.id)}" value="Edit" class="btn btn-primary" />
+         </div>
+
+         </h:form>
+      </ui:define>
+   </ui:composition>

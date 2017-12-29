@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+      template="/WEB-INF/templates/master.xhtml">
+
+    <ui:define name="navbar">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="logout.jsf"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+        <p class="navbar-text navbar-right">Welcome #{authBean.loggedUsername}</p>
+    </ui:define>
+
+    <ui:define name="content">
+        <h1>Welcome to the Login Demo!</h1>
+    </ui:define>
+</ui:composition>
