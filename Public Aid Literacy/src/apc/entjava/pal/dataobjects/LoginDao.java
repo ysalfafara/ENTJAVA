@@ -1,9 +1,7 @@
 package apc.entjava.pal.dataobjects;
 import apc.entjava.pal.services.LoginService;
 import apc.entjava.pal.Users;
-import apc.entjava.pal.AuthBean;
 
-import javax.faces.context.FacesContext;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,7 +10,6 @@ import javax.sql.DataSource;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import java.util.Map;
 
 import java.sql.*;
 
@@ -94,7 +91,7 @@ public class LoginDao implements LoginService {
             }
 
             if(i > 0) {
-                return "mainpage";
+                return "home";
             }
             else {
                 return "error";

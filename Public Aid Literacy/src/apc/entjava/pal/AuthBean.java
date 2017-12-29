@@ -76,11 +76,9 @@ public class AuthBean implements Serializable {
         return list;
     }
 
-
     public static String editUserAccInDB(Users editUserAcc) {
         Users editRecord = null;
         Map<String,Object> sessionMapObj = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-
         PreparedStatement ps = null;
         Connection con = null;
         ResultSet rs = null;
@@ -88,7 +86,6 @@ public class AuthBean implements Serializable {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/public_aid_literacy", "pal", "palpass");
-
             String sql = "SELECT * FROM users WHERE username='" + loggedUsername + "'";
             ps= con.prepareStatement(sql);
             rs= ps.executeQuery();
@@ -116,6 +113,57 @@ public class AuthBean implements Serializable {
         }
         return "/edit_account.xhtml?faces-redirect=true";
     }
+
+    public static String saveUserDonationInDB(Users newUserDonation) {
+        int i = 0;
+
+        PreparedStatement ps1 = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = null;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/public_aid_literacy", "pal", "palpass");
+            String id = "SELECT userId FROM users WHERE username='" + loggedUsername + "'";
+            ps1 = con.prepareStatement(id);
+            rs= ps1.executeQuery();
+
+            while (rs.next()) {
+                Users usr = new Users();
+                usr.setId(rs.getInt("userId"));
+            }
+
+            String sql = "INSERT INTO donation(donationType, donationAmount, userId) VALUES(?,?,?)";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, newUserDonation.getDonationType());
+            ps.setString(2, newUserDonation.getDonationAmount());
+            ps.setInt(3, newUserDonation.getId());
+
+            i = ps.executeUpdate();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+
+        finally {
+            try {
+                con.close();
+                ps.close();
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(i > 0) {
+            return "home";
+        }
+        else {
+            return "error";
+        }
+    }
+
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();

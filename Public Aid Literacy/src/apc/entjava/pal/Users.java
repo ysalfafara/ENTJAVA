@@ -2,19 +2,36 @@ package apc.entjava.pal;
 import apc.entjava.pal.dataobjects.LoginDao;
 import apc.entjava.pal.services.LoginService;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ManagedProperty;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-
-
 @ManagedBean(name="users")
 @RequestScoped
 public class Users {
+    @ManagedProperty(value = "#{authBean}")
+    private AuthBean authBean;
+
+    public AuthBean getAuthBean() {
+        return authBean;
+    }
+
+    public void setAuthBean(AuthBean authBean) {
+        this.authBean = authBean;
+    }
+
+    private LoginService loginService = new LoginDao();
+
+    public String login() {
+        if (loginService.login(username, password)) {
+            authBean.setLoggedUsername(username);
+            return "home";
+        } else {
+            return "error";
+        }
+    }
+
+    /* USER INFORMATION */
     private int Id;
     private String firstName;
     private String lastName;
@@ -27,10 +44,6 @@ public class Users {
     private String username;
     private String password;
     private String confirmPass;
-
-
-    @ManagedProperty(value = "#{authBean}")
-    private AuthBean authBean;
 
     public int getId() {
         return Id;
@@ -141,25 +154,30 @@ public class Users {
         return LoginDao.updateUserAccInDB(updateUserAcc);
     }
 
-    public AuthBean getAuthBean() {
-        return authBean;
+    /* USER DONATION */
+    private String donationType;
+    private String donationAmount;
+
+    public String getDonationType() {
+        return donationType;
     }
 
-    public void setAuthBean(AuthBean authBean) {
-        this.authBean = authBean;
+    public void setDonationType(String donationType) {
+        this.donationType = donationType;
     }
 
-
-    private LoginService loginService = new LoginDao();
-
-    public String login() {
-        if (loginService.login(username, password)) {
-            authBean.setLoggedUsername(username);
-            return "mainpage";
-        } else {
-            return "error";
-        }
+    public String getDonationAmount() {
+        return donationAmount;
     }
+
+    public void setDonationAmount(String donationAmount) {
+        this.donationAmount = donationAmount;
+    }
+
+    public String saveUserDonation(Users newUserDonation) {
+        return authBean.saveUserDonationInDB(newUserDonation);
+    }
+
 
 }
 

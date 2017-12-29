@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      template="/WEB-INF/templates/master.xhtml">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/templates/master.xhtml">
 
-   <ui:define name="title">Login - Login Demo</ui:define>
+   <ui:define name="title">Log In - Public Aid Literacy</ui:define>
 
    <ui:define name="content">
       <h1>Log In</h1>
       <h:form styleClass="form-horizontal">
          <div class="form-group">
-            <h:outputLabel styleClass="control-label col-sm-2" for="loginName">Login Name: </h:outputLabel>
+            <h:outputLabel styleClass="control-label col-sm-2" for="loginName">Username: </h:outputLabel>
             <div class="col-sm-4">
                <h:inputText styleClass="form-control" id="loginName" value="#{users.username}" />
             </div>
