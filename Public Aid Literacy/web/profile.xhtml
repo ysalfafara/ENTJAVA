@@ -22,6 +22,7 @@
 
    <ui:define name="content">
       <h1>Your Profile</h1>
+      #{SeesionUtils.getUserId}
       <h:form styleClass="form-horizontal">
          <div class="form-group">
             <h:dataTable value="#{authBean.getUserList()}" var="u" border="1" class="table table-striped table-hover table-bordered tableUpdated">
@@ -37,6 +38,13 @@
                      Last Name
                   </f:facet>
                   #{u.lastName}
+               </h:column>
+
+               <h:column>
+                  <f:facet name="header">
+                     Gender
+                  </f:facet>
+                  #{u.gender}
                </h:column>
 
                <h:column>
@@ -77,8 +85,10 @@
 
             </h:dataTable>
             <h:commandButton action="#{users.editUserAcc(student.id)}" value="Edit" class="btn btn-primary" />
+            <h:commandLink id="image-link-id" action="donation.jsf">
+               <h:outputText value="Click here"></h:outputText>
+            </h:commandLink>
          </div>
-
       </h:form>
    </ui:define>
 </ui:composition>

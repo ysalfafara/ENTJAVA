@@ -1,5 +1,5 @@
 package apc.entjava.pal;
-
+import apc.entjava.pal.Users;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -16,7 +16,7 @@ import java.util.Map;
 @ManagedBean
 @SessionScoped
 public class AuthBean implements Serializable {
-    private static String loggedUsername;
+    public static String loggedUsername;
 
     public String getLoggedUsername() {
         return loggedUsername;
@@ -128,17 +128,16 @@ public class AuthBean implements Serializable {
             String id = "SELECT userId FROM users WHERE username='" + loggedUsername + "'";
             ps1 = con.prepareStatement(id);
             rs= ps1.executeQuery();
-
+            Users usr = new Users();
             while (rs.next()) {
-                Users usr = new Users();
                 usr.setId(rs.getInt("userId"));
             }
 
             String sql = "INSERT INTO donation(donationType, donationAmount, userId) VALUES(?,?,?)";
             ps = con.prepareStatement(sql);
             ps.setString(1, newUserDonation.getDonationType());
-            ps.setString(2, newUserDonation.getDonationAmount());
-            ps.setInt(3, newUserDonation.getId());
+            ps.setInt(2, newUserDonation.getDonationAmount());
+            ps.setInt(3, usr.getId());
 
             i = ps.executeUpdate();
         }
@@ -157,7 +156,7 @@ public class AuthBean implements Serializable {
         }
 
         if(i > 0) {
-            return "home";
+            return "donation";
         }
         else {
             return "error";

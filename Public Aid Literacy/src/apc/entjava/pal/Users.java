@@ -9,28 +9,6 @@ import javax.faces.bean.ManagedProperty;
 @ManagedBean(name="users")
 @RequestScoped
 public class Users {
-    @ManagedProperty(value = "#{authBean}")
-    private AuthBean authBean;
-
-    public AuthBean getAuthBean() {
-        return authBean;
-    }
-
-    public void setAuthBean(AuthBean authBean) {
-        this.authBean = authBean;
-    }
-
-    private LoginService loginService = new LoginDao();
-
-    public String login() {
-        if (loginService.login(username, password)) {
-            authBean.setLoggedUsername(username);
-            return "home";
-        } else {
-            return "error";
-        }
-    }
-
     /* USER INFORMATION */
     private int Id;
     private String firstName;
@@ -156,7 +134,8 @@ public class Users {
 
     /* USER DONATION */
     private String donationType;
-    private String donationAmount;
+    private int donationAmount;
+    private int donationAmount2;
 
     public String getDonationType() {
         return donationType;
@@ -166,17 +145,49 @@ public class Users {
         this.donationType = donationType;
     }
 
-    public String getDonationAmount() {
+    public int getDonationAmount() {
         return donationAmount;
     }
 
-    public void setDonationAmount(String donationAmount) {
+    public void setDonationAmount(int donationAmount) {
         this.donationAmount = donationAmount;
+    }
+
+    public int getDonationAmount2() {
+        return donationAmount2;
+    }
+
+    public void setDonationAmount2(int donationAmount2) {
+        this.donationAmount2 = donationAmount2;
     }
 
     public String saveUserDonation(Users newUserDonation) {
         return authBean.saveUserDonationInDB(newUserDonation);
     }
+
+    /* OTHERS */
+    @ManagedProperty(value = "#{authBean}")
+    private AuthBean authBean;
+
+    public AuthBean getAuthBean() {
+        return authBean;
+    }
+
+    public void setAuthBean(AuthBean authBean) {
+        this.authBean = authBean;
+    }
+
+    private LoginService loginService = new LoginDao();
+
+    public String login() {
+        if (loginService.login(username, password)) {
+            authBean.setLoggedUsername(username);
+            return "home";
+        } else {
+            return "error";
+        }
+    }
+
 
 
 }

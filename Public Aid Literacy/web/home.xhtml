@@ -10,7 +10,7 @@
     <ui:define name="navbar">
         <ul class="nav navbar-nav">
             <li class="active"><a href="home.jsf">Home</a></li>
-            <li><a href="donation.jsf">Gallery</a></li>
+            <li><a href="#">Gallery</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact Us</a></li>
         </ul>
@@ -21,6 +21,33 @@
     </ui:define>
 
     <ui:define name="content">
-        <h1>Welcome to Public Aid Literacy!</h1>
+        <h1>Donate for Literacy</h1>
+        <h:form styleClass="form-horizontal">
+            <div class="form-group">
+                <h:outputLabel styleClass="control-label col-sm-2">Donation Type: </h:outputLabel>
+                <div class="col-sm-4">
+                    <h:selectOneRadio value="#{users.donationType}" required="true">
+                        <f:selectItem itemValue="One-Time" itemLabel="One-Time" />
+                        <f:selectItem itemValue="Monthly" itemLabel="Monthly" />
+                    </h:selectOneRadio>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel styleClass="control-label col-sm-2">Philippine Peso Amount: </h:outputLabel>
+                <div class="col-sm-4">
+                    <h:selectOneRadio value="#{users.donationAmount}" required="true">
+                        <f:selectItem itemValue="200" itemLabel="200" />
+                        <f:selectItem itemValue="300" itemLabel="300" />
+                        <f:selectItem itemValue="400" itemLabel="400" />
+                    </h:selectOneRadio>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <h:commandButton styleClass="btn btn-info" value="Donate" action="#{users.saveUserDonation(users)}" />
+                </div>
+            </div>
+        </h:form>
     </ui:define>
+
 </ui:composition>
