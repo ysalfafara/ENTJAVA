@@ -43,7 +43,7 @@
           <div class="form-group">
             <h:outputLabel styleClass="control-label col-sm-2">Email: </h:outputLabel>
             <div class="col-sm-4">
-               <h:inputText styleClass="form-control" id="email" required="true" label="Email" validatorMessage="Not a valid email" value="#{users.email}">
+               <h:inputText styleClass="form-control" id="email" required="true" label="Country" validatorMessage="Not a valid email" value="#{users.email}">
                   <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.(com|net|‌​org|edu)"></f:validateRegex>
                   <h:message for="email" style="color:red" />
                </h:inputText>
@@ -52,8 +52,7 @@
           <div class="form-group">
               <h:outputLabel styleClass="control-label col-sm-2">Country: </h:outputLabel>
               <div class="col-sm-4">
-                  <h:inputText styleClass="form-control" id="country" required="true" label="Email" validatorMessage="Not a valid email" value="#{users.email}">
-                      <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.(com|net|‌​org|edu)"></f:validateRegex>
+                  <h:inputText styleClass="form-control" id="country" required="true" label="Country"  value="#{users.country}">
                       <h:message for="country" style="color:red" />
                   </h:inputText>
               </div>
