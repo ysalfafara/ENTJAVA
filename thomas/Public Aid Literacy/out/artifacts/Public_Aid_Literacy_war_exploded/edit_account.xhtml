@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/templates/master.xhtml">
+
+   <ui:define name="title">Edit Account - Public Aid Literacy</ui:define>
+
+   <ui:define name="navbar">
+      <ul class="nav navbar-nav">
+         <li><a href="home.jsf">Home</a></li>
+         <li><a href="#">Gallery</a></li>
+         <li><a href="#">About Us</a></li>
+         <li><a href="#">Contact Us</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+         <li><a href="profile.jsf"> Welcome #{authBean.loggedUsername}</a></li>
+         <li><a href="logout.jsf"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+   </ui:define>
+
+   <ui:define name="content">
+      <h1>Edit Your Account</h1>
+      <h:form styleClass="form-horizontal">
+         <div class="form-group">
+            <h:outputLabel styleClass="control-label col-sm-2">First Name: </h:outputLabel>
+            <div class="col-sm-4">
+               <h:inputText styleClass="form-control" value="#{editRecordObj.firstName}" />
+            </div>
+         </div>
+         <div class="form-group">
+            <h:outputLabel styleClass="control-label col-sm-2">Last Name: </h:outputLabel>
+            <div class="col-sm-4">
+               <h:inputText styleClass="form-control" value="#{editRecordObj.lastName}" />
+            </div>
+         </div>
+         <div class="form-group">
+            <h:outputLabel styleClass="control-label col-sm-2">Gender:</h:outputLabel>
+            <div class="col-sm-4">
+               <h:selectOneRadio value="#{editRecordObj.gender}">
+                  <f:selectItem itemValue="M" itemLabel="Male" /><f:selectItem itemValue="F" itemLabel="Female" />
+               </h:selectOneRadio>
+            </div>
+         </div>
+         <div class="form-group">
+            <h:outputLabel styleClass="control-label col-sm-2">Mobile Number:</h:outputLabel>
+            <div class="col-sm-4">
+               <h:inputText styleClass="form-control" value="#{editRecordObj.mobileNum}" />
+            </div>
+         </div>
+         <div class="form-group">
+            <h:outputLabel styleClass="control-label col-sm-2">Email:</h:outputLabel>
+            <div class="col-sm-4">
+               <h:inputText styleClass="form-control" value="#{editRecordObj.email}" />
+            </div>
+         </div>
+         <div class="form-group">
+            <h:outputLabel styleClass="control-label col-sm-2">Country:</h:outputLabel>
+            <div class="col-sm-4">
+               <h:inputText styleClass="form-control" value="#{editRecordObj.country}" />
+            </div>
+         </div>
+         <div class="form-group">
+            <h:outputLabel styleClass="control-label col-sm-2">Country:</h:outputLabel>
+            <div class="col-sm-4">
+               <h:inputText styleClass="form-control" value="#{editRecordObj.country}" />
+            </div>
+         </div>
+         <div class="form-group">
+            <h:outputLabel styleClass="control-label col-sm-2">City:</h:outputLabel>
+            <div class="col-sm-4">
+               <h:inputText styleClass="form-control" value="#{editRecordObj.city}" />
+            </div>
+         </div>
+         <div class="form-group">
+            <h:outputLabel styleClass="control-label col-sm-2">Address:</h:outputLabel>
+            <div class="col-sm-4">
+               <h:inputTextarea styleClass="form-control" value="#{editRecordObj.address}" cols="50" rows="5" />
+            </div>
+         </div>
+         <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+               <h:commandButton styleClass="btn btn-primary updateBtnStyle" value="Update" action="#{users.updateUserAcc(editRecordObj)}" />
+            </div>
+         </div>
+      </h:form>
+   </ui:define>
+</ui:composition>

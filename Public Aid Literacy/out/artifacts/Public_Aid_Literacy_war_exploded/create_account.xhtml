@@ -27,7 +27,7 @@
           <div class="form-group">
            <h:outputLabel class="control-label col-sm-2">Gender:</h:outputLabel>
            <div class="col-sm-4">
-               <h:selectOneRadio id="gender-id" value="#{users.gender}" validatorMessage="Gender is required">
+               <h:selectOneRadio id="gender-id" value="#{users.gender}" >
                    <f:selectItem itemValue="M" itemLabel="Male" /><f:selectItem itemValue="F" itemLabel="Female" />
                    <f:validateRequired/>
                </h:selectOneRadio>
