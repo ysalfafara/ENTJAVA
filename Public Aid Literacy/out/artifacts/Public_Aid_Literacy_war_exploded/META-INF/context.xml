@@ -28,5 +28,5 @@
    <Resource name="jdbc/LoginDB" auth="Container" type="javax.sql.DataSource"
              maxActive="100" maxIdle="30" maxWait="10000"
              username="pal" password="palpass" driverClassName="com.mysql.cj.jdbc.Driver"
-             url="jdbc:mysql://localhost:3306/public_aid_literacy"/>
+             url="jdbc:mysql://localhost/public_aid_literacy?&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Asia/Manila" />
 </Context>

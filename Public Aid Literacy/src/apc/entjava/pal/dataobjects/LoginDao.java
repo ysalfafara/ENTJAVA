@@ -60,7 +60,7 @@ public class LoginDao implements LoginService {
 
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/public_aid_literacy", "pal", "palpass");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/public_aid_literacy?&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Asia/Manila", "pal", "palpass");
                 String sql = "INSERT INTO users(firstName, lastName, gender, mobileNum, email, country, city, address, username, password) VALUES(?,?,?,?,?,?,?,?,?,?)";
                 ps = con.prepareStatement(sql);
                 ps.setString(1, newUserAcc.getFirstName());
@@ -112,7 +112,7 @@ public class LoginDao implements LoginService {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/public_aid_literacy", "pal", "palpass");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/public_aid_literacy?&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Asia/Manila", "pal", "palpass");
             String sql = "UPDATE users set firstName=?, lastName=?, gender=?, mobileNum=?, email=?, country=?, city=?, address=?, username=?, password=? WHERE username='" + updateUserAcc.getUsername() + "'";
             ps = con.prepareStatement(sql);
             ps.setInt(1,updateUserAcc.getId());

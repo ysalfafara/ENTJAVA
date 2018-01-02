@@ -34,7 +34,7 @@ public class AuthBean implements Serializable {
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/public_aid_literacy", "pal", "palpass");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/public_aid_literacy?&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Asia/Manila", "pal", "palpass");
 
             String sql = "SELECT * FROM users WHERE username='" + loggedUsername + "'";
             ps= con.prepareStatement(sql);
@@ -85,7 +85,7 @@ public class AuthBean implements Serializable {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/public_aid_literacy", "pal", "palpass");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/public_aid_literacy?&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Asia/Manila", "pal", "palpass");
             String sql = "SELECT * FROM users WHERE username='" + loggedUsername + "'";
             ps= con.prepareStatement(sql);
             rs= ps.executeQuery();
@@ -124,7 +124,7 @@ public class AuthBean implements Serializable {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/public_aid_literacy", "pal", "palpass");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/public_aid_literacy?useUnicode=true&amp;useJD‌​BCCompliantTimezoneS‌​hift=true&amp;useLeg‌​acyDatetimeCode=fals‌​e&amp;serverTimezone‌​=Asia/Manila", "pal", "palpass");
             String id = "SELECT userId FROM users WHERE username='" + loggedUsername + "'";
             ps1 = con.prepareStatement(id);
             rs= ps1.executeQuery();
